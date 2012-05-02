@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+    </fx:Declarations>
+
+    <fx:Script>
+        <![CDATA[
+            import com.testflightapp.sdk.TestFlight;
+        ]]>
+    </fx:Script>
+
+    <s:layout>
+      <s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+    </s:layout>
+    <s:Panel title="TestFlight ANE Test" width="90%" height="90%">
+      <s:layout>
+        <s:VerticalLayout horizontalAlign="center" gap="64" paddingTop="20" paddingBottom="20"/>
+      </s:layout>
+
+      <s:Button label="takeOff()" width="80%"
+      click="TestFlight.takeOff('479f669914882fe22ab3cee91e591424_ODU4NjQyMDEyLTA0LTMwIDE2OjI3OjEwLjczMDI0MQ');"/>
+
+      <s:HGroup width="80%" verticalAlign="middle">
+        <s:Button label="checkpoint:" click="TestFlight.passCheckpoint(checkpoint.text);"/>
+        <s:TextInput id="checkpoint" width="100%" text="Menu"/>
+      </s:HGroup>
+
+      <s:Button label="openFeedbackView()" width="80%"
+      click="TestFlight.openFeedbackView();"/>
+
+    </s:Panel>
+
+</s:Application>

@@ -1,0 +1,64 @@
+Testflight ANE
+==============
+Allows you to use TestFlight from within an AIR application.
+
+You may download binary builds from the [wiki](https://github.com/jlopez/testflight-ane/wiki).
+
+Usage
+-----
+The library follows the [TestFlight SDK](https://testflightapp.com/sdk/)
+as closely as possible. Please read its
+[documentation](https://testflightapp.com/sdk/doc/1.0/) for further
+details.
+
+Here's some sample code:
+
+    import com.testflightapp.sdk.TestFlight;
+
+    // Optional setup
+    TestFlight.addCustomEnvironmentInformation("user", userId);
+
+    // Optional submission of device identifier
+    // Will send UDID if this function is called
+    TestFlight.setDeviceIdentifier();
+
+    // Only required function, but see below...
+    TestFlight.takeOff(TEAM_TOKEN);
+
+    // You may register checkpoint
+    TestFlight.passCheckpoint("Main Menu");
+
+    // Or launch the feedback view
+    TestFlight.openFeedbackView();
+
+    // Alternatively, supply your own feedback string
+    TestFlight.submitFeedback(feedbackField.text);
+
+    // Lastly, you can tweak TestFlight internal settings
+    TestFlight.setOptions({ logToConsole: false });
+
+Look ma, no hands
+-----------------
+If you define a `TFTeamToken` property in your Info.plist, the
+TestFlight ANE will automatically call .takeOff() upon application
+startup. You may also declare a `TFSetDeviceIdentifier` boolean,
+which if set to `true` will call .setDeviceIdentifier() with
+the iDevice UDID.
+
+Finally, you can define a boolean property `ANEDebug` to debug
+the extension, hopefully you'll never have to.
+
+Building
+--------
+You may download binary builds from the wiki.
+
+In order to build, you'll need the following:
+
+* Xcode command line tools
+* Flex SDK with bin/ directory in your PATH
+
+Go to the `dist` directory and run:
+
+    make ane
+
+This will create a testflight.ane in the current directory.
