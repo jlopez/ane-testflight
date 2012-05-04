@@ -1,10 +1,10 @@
 <extension xmlns="http://ns.adobe.com/air/extension/3.1">
-  <id>com.testflightapp.sdk</id>
-  <versionNumber>1.0</versionNumber>
+  <id>@EXT_ID@</id>
+  <versionNumber>@VERSION@.@REVISION@</versionNumber>
   <platforms>
     <platform name="iPhone-ARM">
       <applicationDeployment>
-        <nativeLibrary>libIOS.a</nativeLibrary>
+        <nativeLibrary>@ANE_IOS_LIB@</nativeLibrary>
         <initializer>ExtInitializer</initializer>
         <finalizer>ExtFinalizer</finalizer>
       </applicationDeployment>

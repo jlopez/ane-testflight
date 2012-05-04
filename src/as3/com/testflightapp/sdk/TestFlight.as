@@ -74,7 +74,7 @@ package com.testflightapp.sdk {
     //---------------------------------------------------------------------
     private static function initContext():ExtensionContext {
       var context:ExtensionContext =
-        ExtensionContext.createExtensionContext(EXTENSION_ID, null);
+        ExtensionContext.createExtensionContext(EXTENSION_ID, "TestFlightLib");
       if (context)
         _isSupported = context.actionScriptData;
       return context;

@@ -37,6 +37,15 @@ Here's some sample code:
     // Lastly, you can tweak TestFlight internal settings
     TestFlight.setOptions({ logToConsole: false });
 
+When building an .ipa, you must:
+
+* Extract the libNativeLibrary.a found inside the .ane at
+/META-INF/ANE/iPhone-ARM-lib.
+* Move this library into the Flex SDK at lib/aot/lib
+
+Otherwise, linker errors will ensue. Alternatively, you can build
+your .ipa using the air-mk makefiles which will do this automatically.
+
 Look ma, no hands
 -----------------
 If you define a `TFTeamToken` property in your Info.plist, the
@@ -48,10 +57,8 @@ the iDevice UDID.
 Finally, you can define a boolean property `ANEDebug` to debug
 the extension, hopefully you'll never have to.
 
-Building
---------
-You may download binary builds from the wiki.
-
+Building the .ANE yourself
+--------------------------
 In order to build, you'll need the following:
 
 * Xcode command line tools

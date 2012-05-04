@@ -14,11 +14,16 @@ SRCDIR = $(ROOT)/src/test
 SRC_MAIN = $(SRCDIR)/test.mxml
 APP_XML_IN = $(SRCDIR)/app.xml.in
 ANES = $(ANE)
-OTHER_RESOURCES =
+OTHER_RESOURCES = $(OBJC_NIBS)
 
 ################## ANE Config
-OBJC_SRCDIRS = ../src/ios ../src/ios/ane
-OBJC_INCLDIRS = ../src/ios/ane ../src/ios/testflight
-OBJC_XIBDIRS =
+EXT_ID = com.testflightapp.sdk
+ANE_IOS_LIB_SOURCES = $(call findcfiles,../src/ios) ../src/ios/testflight/libTestFlight.a
+ANE_IOS_LIB_CFLAGS = -I../src/ios/ane/src -I../src/ios/testflight
+ANE_BUNDLED_LIBS = $(NATIVE_LIBRARY_LIB)
+
+NATIVE_LIBRARY_LIB = libNativeLibrary.a
+NATIVE_LIBRARY_LIB_SOURCES = $(call findcfiles,../src/ios/ane/src)
 
 include mk/ane.mk
+
