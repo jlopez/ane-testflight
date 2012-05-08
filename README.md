@@ -2,7 +2,7 @@ Testflight ANE
 ==============
 Allows you to use TestFlight from within an AIR application.
 
-You may download binary builds from the [wiki](https://github.com/jlopez/testflight-ane/wiki).
+You may download binary builds from the [wiki](https://github.com/jlopez/ane-testflight/wiki). Latest build can be downloaded from [here](ane-testflight/wiki/testflight-1.0.ane)
 
 Usage
 -----
