@@ -1,5 +1,7 @@
 package com.testflightapp.sdk {
+  import flash.events.StatusEvent;
   import flash.external.ExtensionContext;
+  import flash.utils.getQualifiedClassName;
 
   /**
    * Simple NativeAlert extension that allows you to
@@ -19,14 +21,23 @@ package com.testflightapp.sdk {
     // Private Properties.
     //
     //---------------------------------------------------------------------
-    private static var context:ExtensionContext = initContext();
+    private static var context:ExtensionContext;
     private static var _isSupported:Boolean;
+    private static var _instance:TestFlight;
+    private static var _objectPool:Object = {};
+    private static var _objectPoolId:int = 0;
 
     //---------------------------------------------------------------------
     //
     // Public Methods.
     //
     //---------------------------------------------------------------------
+    public function TestFlight() {
+      if (_instance)
+        throw new Error("Singleton");
+      _instance = this;
+    }
+
     public static function get isSupported():Boolean {
       return _isSupported;
     }
@@ -67,17 +78,47 @@ package com.testflightapp.sdk {
         context.call("setOptions", options);
     }
 
+    public function getQualifiedClassName(obj:Object):String {
+      return flash.utils.getQualifiedClassName(obj);
+    }
+
+    public function enumerateObjectProperties(obj:Object):Array {
+      var keys:Array = [];
+      for (var key:String in obj)
+        keys.push(key);
+      return keys;
+    }
+
+    public function __retainObject(obj:Object):int {
+      _objectPool[++_objectPoolId] = obj;
+      return _objectPoolId;
+    }
+
+    public function __getObject(id:int):Object {
+      return _objectPool[id];
+    }
+
     //---------------------------------------------------------------------
     //
     // Private Methods.
     //
     //---------------------------------------------------------------------
-    private static function initContext():ExtensionContext {
-      var context:ExtensionContext =
-        ExtensionContext.createExtensionContext(EXTENSION_ID, "TestFlightLib");
-      if (context)
+    private static function context_statusEventHandler(event:StatusEvent):void {
+      if (event.level == "TICKET")
+        context.call("claimTicket", event.code);
+      else if (event.level == "RELEASE")
+        delete _objectPool[int(event.code)];
+    }
+
+    {
+      new TestFlight();
+      context = ExtensionContext.createExtensionContext(EXTENSION_ID, "TestFlightLib");
+      if (context) {
         _isSupported = context.actionScriptData;
-      return context;
+        context.addEventListener(StatusEvent.STATUS, context_statusEventHandler);
+        if (_isSupported)
+          context.call("setActionScriptThis", _instance);
+      }
     }
   }
 }

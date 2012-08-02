@@ -64,10 +64,8 @@ FN_END
   [TestFlight submitFeedback:feedback];
 }
 
-- (void)setOptions:(ASObject *)opts {
-  NSDictionary *dict = [opts dictionaryWithProperties:@"reinstallCrashHandlers",
-                        @"logToConsole", @"logToSTDERR", @"sendLogOnlyOnCrash", nil];
-  [TestFlight setOptions:dict];
+- (void)setOptions:(NSDictionary *)opts {
+  [TestFlight setOptions:opts];
 }
 
 @end

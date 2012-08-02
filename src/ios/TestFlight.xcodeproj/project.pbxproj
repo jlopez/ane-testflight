@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		009AC4D61453648D001C38F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009AC4D51453648D001C38F5 /* Foundation.framework */; };
+		A5893B7015CB158300AA5874 /* NativeLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = A5893B6E15CB158300AA5874 /* NativeLibrary.h */; };
+		A5893B7115CB158300AA5874 /* NativeLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = A5893B6F15CB158300AA5874 /* NativeLibrary.m */; };
 		A5FA1E04154F7829005262AB /* TestFlightLib.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5FA1E03154F7829005262AB /* TestFlightLib.mm */; };
 		A5FA1E0B154F7842005262AB /* TestFlight.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FA1E09154F7842005262AB /* TestFlight.h */; };
-		A5FADD661551EB0F009BC110 /* NativeLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FADD641551EB0F009BC110 /* NativeLibrary.h */; };
-		A5FADD671551EB0F009BC110 /* NativeLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FADD651551EB0F009BC110 /* NativeLibrary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		009AC4D21453648D001C38F5 /* libTestFlight.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTestFlight.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		009AC4D51453648D001C38F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5893B6E15CB158300AA5874 /* NativeLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeLibrary.h; path = src/NativeLibrary.h; sourceTree = "<group>"; };
+		A5893B6F15CB158300AA5874 /* NativeLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeLibrary.m; path = src/NativeLibrary.m; sourceTree = "<group>"; };
 		A5FA1E03154F7829005262AB /* TestFlightLib.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestFlightLib.mm; sourceTree = "<group>"; };
 		A5FA1E09154F7842005262AB /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		A5FADD641551EB0F009BC110 /* NativeLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeLibrary.h; sourceTree = "<group>"; };
-		A5FADD651551EB0F009BC110 /* NativeLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeLibrary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 		A5FADD631551EB0F009BC110 /* ane */ = {
 			isa = PBXGroup;
 			children = (
-				A5FADD641551EB0F009BC110 /* NativeLibrary.h */,
-				A5FADD651551EB0F009BC110 /* NativeLibrary.m */,
+				A5893B6E15CB158300AA5874 /* NativeLibrary.h */,
+				A5893B6F15CB158300AA5874 /* NativeLibrary.m */,
 			);
 			path = ane;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5FA1E0B154F7842005262AB /* TestFlight.h in Headers */,
-				A5FADD661551EB0F009BC110 /* NativeLibrary.h in Headers */,
+				A5893B7015CB158300AA5874 /* NativeLibrary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5FA1E04154F7829005262AB /* TestFlightLib.mm in Sources */,
-				A5FADD671551EB0F009BC110 /* NativeLibrary.m in Sources */,
+				A5893B7115CB158300AA5874 /* NativeLibrary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
