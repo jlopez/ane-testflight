@@ -63,6 +63,7 @@ In order to build, you'll need the following:
 
 * Xcode command line tools
 * Flex SDK with bin/ directory in your PATH
+* [XMLStarlet](http://xmlstar.sourceforge.net)
 
 Go to the `dist` directory and run:
 
