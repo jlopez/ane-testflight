@@ -6,9 +6,24 @@
     </fx:Declarations>
 
     <fx:Script>
-        <![CDATA[
-            import com.testflightapp.sdk.TestFlight;
-        ]]>
+      <![CDATA[
+        import com.testflightapp.sdk.TestFlight;
+
+        private function takeOff():void {
+          TestFlight.takeOff('479f669914882fe22ab3cee91e591424_ODU4NjQyMDEyLTA0LTMwIDE2OjI3OjEwLjczMDI0MQ');
+          log("takeOff!");
+        }
+
+        private function tfLog():void {
+          var msg:String = "All your bases are belong to us";
+          TestFlight.log(msg);
+          log(msg);
+        }
+
+        private function log(msg:String):void {
+          console.text += msg + "\n";
+        }
+      ]]>
     </fx:Script>
 
     <s:layout>
@@ -19,16 +34,18 @@
         <s:VerticalLayout horizontalAlign="center" gap="64" paddingTop="20" paddingBottom="20"/>
       </s:layout>
 
-      <s:Button label="takeOff()" width="80%"
-      click="TestFlight.takeOff('479f669914882fe22ab3cee91e591424_ODU4NjQyMDEyLTA0LTMwIDE2OjI3OjEwLjczMDI0MQ');"/>
-
       <s:HGroup width="80%" verticalAlign="middle">
-        <s:Button label="checkpoint:" click="TestFlight.passCheckpoint(checkpoint.text);"/>
-        <s:TextInput id="checkpoint" width="100%" text="Menu"/>
+        <s:Button label="takeoff" click="takeOff()"/>
+        <s:Button label="feedback" click="TestFlight.openFeedbackView();"/>
       </s:HGroup>
 
-      <s:Button label="openFeedbackView()" width="80%"
-      click="TestFlight.openFeedbackView();"/>
+      <s:HGroup width="80%" verticalAlign="middle">
+        <s:Button label="ckp1" click="TestFlight.passCheckpoint('ckp1')"/>
+        <s:Button label="ckp2" click="TestFlight.passCheckpoint('ckp2')"/>
+        <s:Button label="log" click="tfLog()"/>
+      </s:HGroup>
+
+      <s:TextArea id="console" fontSize="14" height="100%" width="80%" editable="false"/>
 
     </s:Panel>
 

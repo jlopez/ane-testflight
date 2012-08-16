@@ -25,6 +25,7 @@ FN_BEGIN(TestFlightLib)
   FN(openFeedbackView, openFeedbackView)
   FN(submitFeedback, submitFeedback:)
   FN(setOptions, setOptions:)
+  FN(log, log:)
 FN_END
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -66,6 +67,10 @@ FN_END
 
 - (void)setOptions:(NSDictionary *)opts {
   [TestFlight setOptions:opts];
+}
+
+- (void)log:(NSString *)msg {
+  TFLog(@"%@", msg);
 }
 
 @end

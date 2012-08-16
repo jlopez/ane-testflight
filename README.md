@@ -34,8 +34,12 @@ Here's some sample code:
     // Alternatively, supply your own feedback string
     TestFlight.submitFeedback(feedbackField.text);
 
-    // Lastly, you can tweak TestFlight internal settings
+    // You can tweak TestFlight internal settings
     TestFlight.setOptions({ logToConsole: false });
+
+    // You can use the TFLog function
+    // Unfortuntately, no varargs are allowed for now
+    TestFlight.log("All your bases are belong to us");
 
 When building an .ipa, you must:
 
@@ -45,6 +49,9 @@ When building an .ipa, you must:
 
 Otherwise, linker errors will ensue. Alternatively, you can build
 your .ipa using the air-mk makefiles which will do this automatically.
+
+Also be sure to include the `-extdir` option when invoking adt,
+pointing at a directory where the testflight.ane resdies.
 
 Look ma, no hands
 -----------------

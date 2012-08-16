@@ -78,6 +78,11 @@ package com.testflightapp.sdk {
         context.call("setOptions", options);
     }
 
+    public static function log(msg:String):void {
+      if (isSupported)
+        context.call("log", msg);
+    }
+
     public function getQualifiedClassName(obj:Object):String {
       return flash.utils.getQualifiedClassName(obj);
     }
