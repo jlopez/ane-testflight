@@ -1,6 +1,8 @@
 <extension xmlns="http://ns.adobe.com/air/extension/3.1">
   <id>@EXT_ID@</id>
   <versionNumber>@VERSION@.@REVISION@</versionNumber>
+  <name>@NAME@</name>
+  <description>@NAME@ r@REVISION@ (@COMMIT@)</description>
   <platforms>
     <platform name="iPhone-ARM">
       <applicationDeployment>
