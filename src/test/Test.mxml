@@ -9,15 +9,13 @@
       <![CDATA[
         import com.testflightapp.sdk.TestFlight;
 
-        private function takeOff():void {
-          TestFlight.takeOff('479f669914882fe22ab3cee91e591424_ODU4NjQyMDEyLTA0LTMwIDE2OjI3OjEwLjczMDI0MQ');
-          log("takeOff!");
+        private function init():void {
+          TestFlight.init();
+          log("TestFlight.init()");
         }
 
-        private function tfLog():void {
-          var msg:String = "All your bases are belong to us";
-          TestFlight.log(msg);
-          log(msg);
+        private function crash():void {
+          TestFlight.crash("Voluntary crash!");
         }
 
         private function log(msg:String):void {
@@ -35,14 +33,8 @@
       </s:layout>
 
       <s:HGroup width="80%" verticalAlign="middle">
-        <s:Button label="takeoff" click="takeOff()"/>
-        <s:Button label="feedback" click="TestFlight.openFeedbackView();"/>
-      </s:HGroup>
-
-      <s:HGroup width="80%" verticalAlign="middle">
-        <s:Button label="ckp1" click="TestFlight.passCheckpoint('ckp1')"/>
-        <s:Button label="ckp2" click="TestFlight.passCheckpoint('ckp2')"/>
-        <s:Button label="log" click="tfLog()"/>
+        <s:Button label="init" click="init()"/>
+        <s:Button label="crash" click="crash()"/>
       </s:HGroup>
 
       <s:TextArea id="console" fontSize="14" height="100%" width="80%" editable="false"/>

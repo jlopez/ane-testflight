@@ -1,12 +1,12 @@
 package com.testflightapp.sdk {
+  import flash.desktop.NativeApplication;
+  import flash.events.Event;
   import flash.events.StatusEvent;
   import flash.external.ExtensionContext;
   import flash.utils.getQualifiedClassName;
 
   /**
-   * Simple NativeAlert extension that allows you to
-   * Open device specific alerts and recieve information about
-   * what button the user pressed to close the alert.
+   * TestFlight extension
    */
   public class TestFlight {
     //---------------------------------------------------------------------
@@ -22,10 +22,10 @@ package com.testflightapp.sdk {
     //
     //---------------------------------------------------------------------
     private static var context:ExtensionContext;
-    private static var _isSupported:Boolean;
     private static var _instance:TestFlight;
     private static var _objectPool:Object = {};
     private static var _objectPoolId:int = 0;
+    private static var _initialized:Boolean;
 
     //---------------------------------------------------------------------
     //
@@ -38,49 +38,25 @@ package com.testflightapp.sdk {
       _instance = this;
     }
 
-    public static function get isSupported():Boolean {
-      return _isSupported;
+    public static function init():void {
+      if (_initialized)
+        return;
+
+      if (!context)
+        return;
+
+      var nativeApplication:NativeApplication = NativeApplication.nativeApplication;
+      nativeApplication.addEventListener(Event.ACTIVATE, onActivate);
+      _initialized = true;
+
+      function onActivate(event:Event):void { context.call("onActivate"); }
     }
 
-    public static function addCustomEnvironmentInformation(
-      key:String, info:String):void {
-      if (isSupported)
-        context.call("addCustomEnvironmentInformation", info, key);
-    }
-
-    public static function setDeviceIdentifier():void {
-      if (isSupported)
-        context.call("setDeviceIdentifier");
-    }
-
-    public static function takeOff(teamToken:String):void {
-      if (isSupported)
-        context.call("takeOff", teamToken);
-    }
-
-    public static function passCheckpoint(checkpoint:String):void {
-      if (isSupported)
-        context.call("passCheckpoint", checkpoint);
-    }
-
-    public static function openFeedbackView():void {
-      if (isSupported)
-        context.call("openFeedbackView");
-    }
-
-    public static function submitFeedback(feedback:String):void {
-      if (isSupported)
-        context.call("submitFeedback", feedback);
-    }
-
-    public static function setOptions(options:Object):void {
-      if (isSupported)
-        context.call("setOptions", options);
-    }
-
-    public static function log(msg:String):void {
-      if (isSupported)
-        context.call("log", msg);
+    public static function crash(message:String):void {
+      if (context)
+        context.call("crash", message);
+      else
+        throw new Error(message);
     }
 
     public function getQualifiedClassName(obj:Object):String {
@@ -117,12 +93,14 @@ package com.testflightapp.sdk {
 
     {
       new TestFlight();
-      context = ExtensionContext.createExtensionContext(EXTENSION_ID, "TestFlightLib");
+      context = ExtensionContext.createExtensionContext(EXTENSION_ID, EXTENSION_ID + ".TestFlightLib");
       if (context) {
-        _isSupported = context.actionScriptData;
-        context.addEventListener(StatusEvent.STATUS, context_statusEventHandler);
-        if (_isSupported)
+        try {
+          context.addEventListener(StatusEvent.STATUS, context_statusEventHandler);
           context.call("setActionScriptThis", _instance);
+        } catch (e:ArgumentError) {
+          context = null;
+        }
       }
     }
   }

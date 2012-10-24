@@ -1,9 +1,12 @@
 [submodule "dist/mk"]
 	path = dist/mk
 	url = git@github.com:jlopez/air-mk.git
-[submodule "src/ios/ane"]
-	path = src/ios/ane
-	url = git@github.com:jlopez/ane-ios-helper.git
 [submodule "src/ios/testflight"]
 	path = src/ios/testflight
 	url = git@github.com:danielctull/TestFlight-SDK
+[submodule "lib/ane"]
+	path = lib/ane
+	url = git@github.com:mindjolt/ane-helper.git
+[submodule "lib/hockey-sdk-android"]
+	path = lib/hockey-sdk-android
+	url = git@github.com:bitstadium/HockeySDK-Android

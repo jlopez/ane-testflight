@@ -40,37 +40,18 @@
     <colorDepth>16bit</colorDepth>
     <manifestAdditions><![CDATA[
       <manifest android:installLocation="auto">
-        <!--See the Adobe AIR documentation for more information about setting Google Android permissions-->
-        <!--Removing the permission android.permission.INTERNET will have the side effect
-        of preventing you from debugging your application on your device-->
         <uses-permission android:name="android.permission.INTERNET"/>
-        <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
-        <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
-        <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
-        <!--The DISABLE_KEYGUARD and WAKE_LOCK permissions should be toggled together
-        in order to access AIR's SystemIdleMode APIs-->
-        <!--<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>-->
-        <!--<uses-permission android:name="android.permission.WAKE_LOCK"/>-->
-        <!--<uses-permission android:name="android.permission.CAMERA"/>-->
-        <!--<uses-permission android:name="android.permission.RECORD_AUDIO"/>-->
-        <!--The ACCESS_NETWORK_STATE and ACCESS_WIFI_STATE permissions should be toggled
-        together in order to use AIR's NetworkInfo APIs-->
-        <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
-        <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
-        <!--<uses-feature android:required="true" android:name="android.hardware.touchscreen.multitouch"/>-->
-        <!--<application android:enabled="true">
-          <activity android:excludeFromRecents="false">
-            <intent-filter>
-              <action android:name="android.intent.action.MAIN"/>
-              <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-          </activity>
-        </application>-->
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <application android:enabled="true" @ANDROID_DEBUGGABLE@>
+          <activity android:name="com.jesusla.ane.CustomActivity"/>
+          <activity android:name="net.hockeyapp.android.UpdateActivity"/>
+        </application>
       </manifest>
     ]]></manifestAdditions>
   </android>
 
   <extensions>
     <extensionID>@EXT_ID@</extensionID>
+    <extensionID>com.jesusla.ane</extensionID>
   </extensions>
 </application>

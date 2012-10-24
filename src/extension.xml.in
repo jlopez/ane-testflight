@@ -9,6 +9,12 @@
         <finalizer>ExtFinalizer</finalizer>
       </applicationDeployment>
     </platform>
+    <platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>@ANE_ANDROID_JAR@</nativeLibrary>
+        <initializer>com.jesusla.ane.Extension</initializer>
+      </applicationDeployment>
+    </platform>
     <platform name="default">
       <applicationDeployment/>
     </platform>
