@@ -16,7 +16,6 @@ HOCKEY_APP_APP_ID = b934b747432005a12d2b8f55f4aed8b5
 SRCDIR = $(ROOT)/src/test
 SRC_MAIN = $(SRCDIR)/test.mxml
 APP_XML_IN = $(SRCDIR)/app.xml.in
-ANDROID_PROPERTIES_IN = ../src/test/android.properties.in
 ANES = $(ANE) ../lib/ane/dist/nativelibrary.ane
 OTHER_RESOURCES = $(OBJC_NIBS)
 
