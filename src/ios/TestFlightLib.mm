@@ -14,10 +14,12 @@
 
 @end
 
-
 @implementation TestFlightLib
 
 FN_BEGIN(TestFlightLib)
+  FN(onActivate, onActivate)
+  FN(crash, crashWithMessage:)
+
   FN(addCustomEnvironmentInformation, addCustomEnvironmentInformation:forKey:)
   FN(setDeviceIdentifier, setDeviceIdentifier)
   FN(takeOff, takeOff:)
@@ -39,6 +41,13 @@ FN_END
     [self takeOff:teamToken];
 
   return YES;
+}
+
+- (void)onActivate {
+}
+
+- (void)crashWithMessage:(NSString *)message {
+  NSAssert1(NO, @"%@", message);
 }
 
 - (void)addCustomEnvironmentInformation:(NSString *)information forKey:(NSString *)key {

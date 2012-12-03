@@ -3,3 +3,4 @@
 *.pbxuser
 *.xcworkspace
 xcuserdata/
+.*.swp
